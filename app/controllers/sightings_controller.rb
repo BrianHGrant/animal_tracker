@@ -1,15 +1,13 @@
 class SightingsController < ApplicationController
 
   def index
-
-    if params[:region_id].present?
-      @sightings = Sighting.where(nil).which_region(params[:region_id])
+    @sightings = Sighting.all
+    @regions = Region.all
+    if params[:region_id]
+      @sightings = Sighting.where('region_id = ?', params[:region_id])
     else
       @sightings = Sighting.all
     end
-    @regions = Region.all
-    render :index
-
   end
 
 
