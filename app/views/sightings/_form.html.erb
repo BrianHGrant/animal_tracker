@@ -1,0 +1,16 @@
+<%=render( "layouts/error", :object => @sighting)%>
+
+<%=form_for [@animal, @sighting] do |f|%>
+  <%=f.label :biologist%>
+  <%=f.text_field :biologist%>
+  <%=f.label :lat%>
+  <%=f.number_field :lat%>
+  <%=f.label :lng%>
+  <%=f.number_field :lng%>
+  <%=f.select(:region_id) do%>
+    <% @regions.each do |region|%>
+      <%=content_tag(:option, region.name, value: region.id)%>
+    <%end%>
+  <%end%>
+  <%=f.submit%>
+<%end%>
