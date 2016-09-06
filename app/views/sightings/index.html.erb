@@ -1,0 +1,17 @@
+<h1>Sightings Index</h1>
+
+<%= form_tag(sightings_path, :method => "get", id: 'search-form') do %>
+
+  <%= select_tag 'region_id', options_for_select(@regions.collect{ |region| [region.name, region.id]}) %>
+
+  <%= submit_tag 'Filter by Region' %>
+
+<%end%>
+
+<ul>
+
+  <% @sightings.each do |sighting| %>
+    <li><%= sighting.id %> || <%= sighting.region.name %></li>
+  <%end%>
+
+</ul>

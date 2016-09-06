@@ -1,4 +1,18 @@
 class SightingsController < ApplicationController
+
+  def index
+
+    if params[:region_id].present?
+      @sightings = Sighting.where(nil).which_region(params[:region_id])
+    else
+      @sightings = Sighting.all
+    end
+    @regions = Region.all
+    render :index
+
+  end
+
+
   def new
     @animal = Animal.find(params[:animal_id])
     @regions = Region.all
