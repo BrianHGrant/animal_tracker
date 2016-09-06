@@ -2,7 +2,9 @@ class SightingsController < ApplicationController
 
   def index
 
-    if params[:region_id].present?
+    if (params[:max] && params[:min])
+      @sightings = Sighting.where(nil).between(params[:max], params[:min])
+    elsif params[:region_id].present?
       @sightings = Sighting.where(nil).which_region(params[:region_id])
     else
       @sightings = Sighting.all

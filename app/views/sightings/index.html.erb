@@ -2,6 +2,12 @@
 
 <%= form_tag(sightings_path, :method => "get", id: 'search-form') do %>
 
+  <%= date_field_tag('max', nil) %> max
+  <br>
+  <%= date_field_tag('min', nil) %> min
+
+ <br>
+
   <%= select_tag 'region_id', options_for_select(@regions.collect{ |region| [region.name, region.id]}) %>
 
   <%= submit_tag 'Filter by Region' %>
