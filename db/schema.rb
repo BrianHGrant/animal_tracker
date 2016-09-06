@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160906181556) do
+ActiveRecord::Schema.define(version: 20160906201058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 20160906181556) do
     t.integer  "animal_id"
     t.integer  "region_id"
     t.string   "biologist"
-    t.decimal  "lat",        precision: 6, scale: 4
-    t.decimal  "lng",        precision: 6, scale: 4
+    t.decimal  "lat",        precision: 7, scale: 4
+    t.decimal  "lng",        precision: 7, scale: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end

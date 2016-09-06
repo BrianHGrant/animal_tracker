@@ -1,3 +1,16 @@
 <h1><%= @animal.name %></h1>
 
+<%if @animal.sightings.any?%>
+  <h4>Here are the sightings for this animal</h4>
+  <ul>
+    <%@animal.sightings.each do |sighting|%>
+    <li>
+      <%= link_to sighting.id, animal_sighting_path(@animal, sighting)%>
+    </li>
+    <%end%>
+  </ul>
+<%else%>
+  <p>No sightings for this animal. If you have seen it let us know!</p>
+<%end%>
+
 <%= link_to "New Sighting", new_animal_sighting_path(@animal) %>
