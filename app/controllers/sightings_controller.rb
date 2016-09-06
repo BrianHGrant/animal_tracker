@@ -3,7 +3,9 @@ class SightingsController < ApplicationController
   def index
     @sightings = Sighting.all
     @regions = Region.all
-    if params[:region_id]
+    if(params[:max] && params[:min])
+      @sightings = Sighting.where('created_at < ? AND created_at > ?', params[:max], params[:min])
+    elsif params[:region_id]
       @sightings = Sighting.where('region_id = ?', params[:region_id])
     else
       @sightings = Sighting.all

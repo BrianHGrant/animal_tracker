@@ -1,7 +1,8 @@
 <h1>Sightings Index</h1>
 
 <%= form_tag(sightings_path, :method => "get", id: 'search-form') do %>
-
+  <%= date_field_tag('max')%> max
+  <%= date_field_tag('min')%> min
   <%= select_tag 'region_id', options_for_select(@regions.collect{ |region| [region.name, region.id]}) %>
 
   <%= submit_tag 'Filter by Region' %>
